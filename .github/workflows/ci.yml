@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,7 +23,3 @@ jobs:
 
       - name: Lint
         run: npm run lint
-
-        #빌드할거 생기면 주석 해제
-      - #name: Build
-        #run: npm run build
