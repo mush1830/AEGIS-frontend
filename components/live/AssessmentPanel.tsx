@@ -62,6 +62,18 @@ export function AssessmentPanel() {
               </ol>
             </div>
           </div>
+
+
+          {/* ✅ TEST: 내용 늘리기용 더미 블록 (확인 후 삭제) */}
+<div className="bg-white/10 rounded-xl p-4">
+  <div className="text-xs font-semibold mb-2">[TEST] 추가 내용</div>
+  <div className="text-sm leading-6 opacity-95">
+    {Array.from({ length: 10 }).map((_, i) => (
+      <p key={i}>- 더미 라인 {i + 1}: 이 내용은 패널 높이 테스트용입니다.</p>
+    ))}
+  </div>
+</div>
+ /* 더미 */
           
         </>
       )}

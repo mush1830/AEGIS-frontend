@@ -1,120 +1,78 @@
 /* styles/tokens.css */
-
 /* =========================================================
-   AEGIS Design Tokens (CSS Variables)
-   - "값(색/톤/상태)"을 의미 기반으로 이름 붙여 관리
-   - 페이지/컴포넌트에서는 #xxxxxx 하드코딩 대신 var(--token) 사용
+   AEGIS Design Tokens – DARK DEFAULT
+   기준: triage-report 실사용 스크린샷
+   - 다크모드를 기본값으로 사용
+   - 모든 UI는 이 토큰만으로 색상 결정
    ========================================================= */
+
 :root {
-  /* -------------------------------------------------------
-     1) Pre-KTAS 단계 색상 (기존 유지)
-     - 등급(0~5) 시각 구분용 팔레트
-     ------------------------------------------------------- */
-  --prektas-bg-0: #64748b;
-  --prektas-bg-1: #dc2626; /* red-600 */
-  --prektas-bg-2: #f97316; /* orange-500 */
-  --prektas-bg-3: #facc15; /* yellow-400 */
-  --prektas-bg-4: #22c55e; /* green-500 */
-  --prektas-bg-5: #3b82f6; /* blue-500 */
-
-  /* -------------------------------------------------------
-     2) 배경 테스트 팔레트 (기존 유지)
-     - 전체 배경 후보 톤
-     ------------------------------------------------------- */
-  --test1: #f5f7fb;
-  --test2: #f8fafc;
-  --test3: #eef2f7;
-
-  /* -------------------------------------------------------
-     3) 헤더 네이비 팔레트 (기존 유지)
-     ------------------------------------------------------- */
-  --navy-primary: #1e3a5f;
-  --navy-dark: #0f2540;
-  --navy-light: #2c5282;
+  /* =======================================================
+     1) App Background (최상위)
+     ======================================================= */
+  --background: #0e0f13;       /* 앱 전체 배경 (거의 블랙) */
+  --foreground: #e5e7eb;       /* 기본 텍스트 */
 
   /* =======================================================
-     4) 전역 베이스 토큰 (✅ 여기만 바꾸면 전체 톤 변경)
+     2) Surface (카드 / 패널 / 버튼 바탕)
      ======================================================= */
+  --surface: #16181d;          /* 카드, 섹션 */
+  --surface-muted: #1c1f26;    /* 칩, 입력, 비활성 영역 */
 
-  /* [GLOBAL] 전체 배경/기본 글자 */
-  --background: var(--test1);
-  --foreground: #171717;
+  /* =======================================================
+     3) Border (매우 약한 대비)
+     ======================================================= */
+  --border: #242833;           /* 기본 테두리 */
+  --border-strong: #31374a;    /* 강조 테두리 (선택 상태) */
 
-  /* [SURFACE] 카드/패널 표면 */
-    --surface: #ffffff;
-    --surface-muted: #f8fafc; /* overview 카드 내부용 */
+  /* =======================================================
+     4) Text
+     ======================================================= */
+  --text-strong: #f3f4f6;      /* 제목 */
+  --text: #e5e7eb;             /* 본문 */
+  --text-muted: #9ca3af;       /* 설명 */
+  --text-subtle: #6b7280;      /* 힌트 */
+  --text-inverse: #0e0f13;
 
+  /* =======================================================
+     5) Primary / Focus (선택 상태)
+     ======================================================= */
+  --primary: #3b82f6;          /* 선택 테두리, 포커스 */
+  --primary-soft: rgba(59, 130, 246, 0.15);
 
-  /* [BORDER] 테두리 */
-  --border: #cbd5e1; /* slate-300 */
-  --border-strong: #334155; /* slate-700 */
+  /* =======================================================
+     6) Header (상단바도 동일 다크 톤)
+     ======================================================= */
+  --header-bg: #0e0f13;
+  --header-fg: var(--text-strong);
+  --header-fg-muted: var(--text-muted);
+  --header-overlay-10: rgba(255, 255, 255, 0.06);
+  --header-overlay-15: rgba(255, 255, 255, 0.1);
 
-  /* [TEXT] 텍스트 톤 */
-  --text-strong: #0f172a; /* slate-900 */
-  --text: #1f2937; /* slate-800 */
-  --text-muted: #64748b; /* slate-500 */
-  --text-subtle: #94a3b8; /* slate-400 */
-  --text-inverse: #ffffff;
+  /* =======================================================
+     7) CTA / Status
+     ======================================================= */
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
 
-  /* [HEADER] 상단바 */
-  --header-bg: var(--navy-primary);
-  --header-fg: #ffffff;
-  --header-fg-muted: rgba(255, 255, 255, 0.8); /* 덜강조 텍스트색 */
-  --header-overlay-10: rgba(255, 255, 255, 0.1);
-  --header-overlay-15: rgba(255, 255, 255, 0.15);
-
-  /* [CTA] 위험 버튼 */
-  --danger: #dc2626;
-  --danger-hover: #b91c1c;
-
-  /* -------------------------------------------------------
-     5) 태그(배지) 토큰 4종
-     - 배경 없이 테두리+글자색으로 의미 전달
-     ------------------------------------------------------- */
-  --tag-info-border: var(--border);
-  --tag-info-fg: #334155; /* slate-700 */
-
-  --tag-crew-border: #a5b4fc; /* indigo-300 */
-  --tag-crew-fg: #4338ca; /* indigo-700 */
-
-  --tag-med-border: #6ee7b7; /* emerald-300 */
-  --tag-med-fg: #047857; /* emerald-700 */
-
-  --tag-risk-border: #fda4af; /* rose-300 */
-  --tag-risk-fg: #be123c; /* rose-700 */
+  /* =======================================================
+     8) Pre-KTAS 단계 색상 (기존 의미 유지)
+     ======================================================= */
+  --prektas-bg-0: #475569;
+  --prektas-bg-1: #dc2626;
+  --prektas-bg-2: #f97316;
+  --prektas-bg-3: #facc15;
+  --prektas-bg-4: #22c55e;
+  --prektas-bg-5: #3b82f6;
 }
 
 /* =========================================================
-   Tailwind v4 theme inline mapping
-   - Tailwind 테마 변수(background/foreground)를 AEGIS 토큰에 연결
+   Tailwind v4 inline theme 연결
    ========================================================= */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* 프로젝트에서 Geist 폰트 변수를 쓰는 경우 연결 */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-/* =========================================================
-   Dark mode
-   - prefers-color-scheme: dark 사용자 브라우저가 다크모드일때 해당설정 사용
-   ========================================================= */
-@media (prefers-color-scheme: dark) {  
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-
-    --surface: #111827; /* slate-900 */
-    --surface-muted: #0b1220;
-
-    --border: #334155; /* slate-700 */
-    --border-strong: #64748b; /* slate-500 */
-
-    --text-strong: #f1f5f9; /* slate-100 */
-    --text: #e2e8f0; /* slate-200 */
-    --text-muted: #94a3b8; /* slate-400 */
-    --text-subtle: #64748b; /* slate-500 */
-  }
 }

@@ -1,23 +1,26 @@
+// app/menu-select/page.tsx
 "use client";
 
 import { useRouter } from "next/navigation";
+import "@/styles/components.css"; // ✅ components 유틸 클래스 사용
 
 export default function MenuSelectPage() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-center gap-10">
-
-      {/* 출동일지 (큰 흰색 영역) */}
+    <div
+      className="min-h-screen flex flex-col items-center justify-center gap-10"
+      style={{ background: "var(--background)", color: "var(--foreground)" }}
+    >
+      {/* 출동일지(큰 영역) */}
       <div
-        className="bg-white rounded-2xl
-                   w-[60%] h-[60vh]
-                   flex flex-col items-center justify-center"
+        className="aegis-surface w-[60%] h-[60vh] flex flex-col items-center justify-center"
+        style={{ borderRadius: "1.25rem" }} // rounded-2xl 느낌 유지(토큰과 무관한 shape)
       >
-        <div className="text-2xl font-semibold text-slate-800 mb-3">
+        <div className="text-2xl font-semibold aegis-text-strong mb-3">
           출동일지
         </div>
-        <div className="text-sm text-slate-500">
+        <div className="text-sm aegis-text-muted">
           최근 활동 기록이 없습니다
         </div>
       </div>
@@ -26,15 +29,11 @@ export default function MenuSelectPage() {
       <button
         type="button"
         onClick={() => router.push("/live")}
-        className="w-[180px] h-[56px]
-                   text-white font-semibold
-                   rounded-xl border-4 border-white
-                   hover:bg-slate-300 transition"
-                   style={{ backgroundColor: "var(--prektas-bg-1)" }}
+        className="aegis-btn aegis-btn--danger"
+        style={{ minWidth: 180 }}
       >
         새 출동 시작
       </button>
-
     </div>
   );
 }

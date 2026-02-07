@@ -22,38 +22,37 @@ export default function LivePage() {
         <AppHeader title="LIVE" />
       </div>
 
-      {/* 본문 */}
-      <main className="flex-1 min-h-0 overflow-hidden p-4">
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 h-full">
-          {/* LEFT */}
-        <div className="min-h-0 flex flex-col">
-          <div className="flex-1 min-h-0">
-            <AssessmentPanel />
-          </div>
-        </div>
+  {/* 본문 */}
+<main className="flex-1 min-h-0 overflow-hidden p-4">
+  <div className="grid h-full grid-rows-[1fr] grid-cols-1 gap-4 lg:grid-cols-2 items-start">
+    {/* LEFT: 내용만큼 */}
+    <div className="min-h-0">
+      <AssessmentPanel />
+    </div>
 
-          {/* RIGHT */}
-          <div className="min-h-0 h-full flex flex-col gap-3">
+    {/* RIGHT: 화면 끝까지 */}
+    <div className="min-h-0 h-full flex flex-col gap-3">
+      {/* 번역기 슬롯 */}
+      <div
+        className={[
+          "transition-all duration-300 ease-in-out",
+          isTranslatorOpen ? "max-h-[260px] opacity-100" : "max-h-0 opacity-0",
+          "overflow-hidden",
+          isTranslatorOpen ? "pointer-events-auto" : "pointer-events-none",
+        ].join(" ")}
+      >
+        <MedicalTranslatorPanel onClose={() => setIsTranslatorOpen(false)} />
+      </div>
 
-            {/* 번역기 슬롯 */}
-            <div
-              className={[
-                "transition-all duration-300 ease-in-out",
-                isTranslatorOpen ? "max-h-[260px] opacity-100" : "max-h-0 opacity-0",
-                "overflow-hidden",
-                isTranslatorOpen ? "pointer-events-auto" : "pointer-events-none",
-              ].join(" ")}
-            >
-              <MedicalTranslatorPanel onClose={() => setIsTranslatorOpen(false)} />
-            </div>
+      {/* 로그: 남은 공간 먹기 */}
+      <div className="flex-1 min-h-0 overflow-hidden">
+        <ActivityLogPanel />
+      </div>
+    </div>
+  </div>
+</main>
 
-            {/* 로그 */}
-            <div className="flex-1 min-h-0 overflow-hidden">
-              <ActivityLogPanel />
-            </div>
-          </div>
-        </div>
-      </main>
+
 
       {/* 하단 고정: STT 입력 + 버튼 */}
       <footer className="shrink-0 border-t border-[var(--border)] bg-[var(--bg)] p-3">
@@ -65,7 +64,7 @@ export default function LivePage() {
             isTranslatorOpen={isTranslatorOpen}
             onToggleTranslator={() => setIsTranslatorOpen((v) => !v)}
             onOpenHospital={() => router.push("/emergency-center-search")}
-            onOpenReport={() => router.push("/ambulance-report")}
+            onOpenReport={() => router.push("/triage-report")}
           />
         </div>
       </footer>
