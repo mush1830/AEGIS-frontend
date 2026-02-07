@@ -47,7 +47,7 @@ export default function Home() {
           {/* 접속하기: 지금은 검증 없이 이동 */}
           <button
             type="button"
-            onClick={() => router.push("/menu_select")}
+            onClick={() => router.push("/menu-select")}
             className="w-full h-12 rounded-xl bg-slate-900 text-white font-semibold hover:bg-slate-800 transition"
           >
             접속하기

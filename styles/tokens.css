@@ -41,8 +41,9 @@
   --foreground: #171717;
 
   /* [SURFACE] 카드/패널 표면 */
-  --surface: #ffffff;
-  --surface-muted: var(--test2);
+    --surface: #ffffff;
+    --surface-muted: #f8fafc; /* overview 카드 내부용 */
+
 
   /* [BORDER] 테두리 */
   --border: #cbd5e1; /* slate-300 */
@@ -58,7 +59,7 @@
   /* [HEADER] 상단바 */
   --header-bg: var(--navy-primary);
   --header-fg: #ffffff;
-  --header-fg-muted: rgba(255, 255, 255, 0.8);
+  --header-fg-muted: rgba(255, 255, 255, 0.8); /* 덜강조 텍스트색 */
   --header-overlay-10: rgba(255, 255, 255, 0.1);
   --header-overlay-15: rgba(255, 255, 255, 0.15);
 

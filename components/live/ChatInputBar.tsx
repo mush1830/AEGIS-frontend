@@ -10,16 +10,7 @@ export function ChatInputBar() {
         placeholder="text 입력창"
       />
 
-      {/* ✅ 번역기 원형 버튼 */}
-      <button
-        type="button"
-        className="h-14 w-14 rounded-full bg-emerald-300 border-2 border-slate-700 font-bold"
-        // TODO: 번역 모달/오버레이 연결 예정
-      >
-        번역기
-      </button>
-
-      {/* ✅ 전송 버튼(원형) */}
+      {/* ✅ 전송 버튼 -> */}
       <button
         type="button"
         className="h-14 w-14 rounded-full bg-white border-2 border-slate-700 text-2xl"

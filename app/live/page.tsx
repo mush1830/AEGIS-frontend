@@ -8,10 +8,11 @@ import { AssessmentPanel } from "@/components/live/AssessmentPanel";
 import { ActivityLogPanel } from "@/components/live/ActivityLogPanel";
 import { ChatInputBar } from "@/components/live/ChatInputBar";
 import { RightActions } from "@/components/live/RightActions";
-
+import { useRouter } from "next/navigation";
 import MedicalTranslatorPanel from "@/components/live/MedicalTranslatorPanel";
 
 export default function LivePage() {
+  const router = useRouter();
   const [isTranslatorOpen, setIsTranslatorOpen] = useState(false);
 
   return (
@@ -22,15 +23,18 @@ export default function LivePage() {
       </div>
 
       {/* 본문 */}
-      <main className="flex-1 overflow-hidden p-4">
+      <main className="flex-1 min-h-0 overflow-hidden p-4">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 h-full">
           {/* LEFT */}
-          <div className="min-h-0">
+        <div className="min-h-0 flex flex-col">
+          <div className="flex-1 min-h-0">
             <AssessmentPanel />
           </div>
+        </div>
 
           {/* RIGHT */}
-          <div className="min-h-0 flex flex-col gap-3">
+          <div className="min-h-0 h-full flex flex-col gap-3">
+
             {/* 번역기 슬롯 */}
             <div
               className={[
@@ -60,6 +64,8 @@ export default function LivePage() {
           <RightActions
             isTranslatorOpen={isTranslatorOpen}
             onToggleTranslator={() => setIsTranslatorOpen((v) => !v)}
+            onOpenHospital={() => router.push("/emergency-center-search")}
+            onOpenReport={() => router.push("/ambulance-report")}
           />
         </div>
       </footer>

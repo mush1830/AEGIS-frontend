@@ -4,6 +4,10 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
+type Props = {
+  title?: string;
+};
+
 function Tab({
   label,
   href,
@@ -28,11 +32,10 @@ function Tab({
   );
 }
 
-export function AppHeader() {
+export function AppHeader({ title }: Props) { 
   const pathname = usePathname();
-  const router = useRouter();
 
-  const isMenu = pathname === "/menu_select";
+  const isMenu = pathname === "/menu-select";
   const isLive = pathname.startsWith("/live");
 
   return (
@@ -71,7 +74,7 @@ export function AppHeader() {
 
       {/* 가운데: 탭 */}
       <nav className="flex items-center gap-2">
-        <Tab label="AEGIS Live" href="/menu_select" active={isMenu} />
+        <Tab label="AEGIS Live" href="/menu-select" active={isMenu} />
         <div className="text-white/30">|</div>
         <Tab label="추가질문" href="/live" active={isLive} />
         {/* 뱃지 느낌 */}
