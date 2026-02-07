@@ -1,0 +1,194 @@
+/* styles/components.css */
+
+@layer components {
+  /* -------------------------------------------------------
+     A) Surface
+     ------------------------------------------------------- */
+  .aegis-surface-strong {
+    background: var(--surface);
+    border: 2px solid var(--border-strong);
+    border-radius: 1rem;
+  }
+
+  .aegis-surface {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+  }
+
+  .aegis-surface-muted {
+    background: var(--surface-muted);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+  }
+
+  /* -------------------------------------------------------
+     B) Text helpers
+     ------------------------------------------------------- */
+  .aegis-text-strong {
+    color: var(--text-strong);
+  }
+  .aegis-text {
+    color: var(--text);
+  }
+  .aegis-text-muted {
+    color: var(--text-muted);
+  }
+  .aegis-text-subtle {
+    color: var(--text-subtle);
+  }
+
+  /* -------------------------------------------------------
+     C) Input
+     ------------------------------------------------------- */
+  .aegis-input {
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 0 1rem;
+    background: var(--surface-muted);
+    color: var(--text);
+    outline: none;
+  }
+  .aegis-input::placeholder {
+    color: var(--text-subtle);
+  }
+  .aegis-input:focus-visible {
+    box-shadow: 0 0 0 3px var(--primary-soft);
+    border-color: var(--border-strong);
+  }
+
+  /* -------------------------------------------------------
+     D) Buttons (토큰 기반, 현장용 크기)
+     ------------------------------------------------------- */
+  .aegis-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    height: 52px;             /* 현장 터치 타깃 */
+    padding: 0 18px;
+    border-radius: 14px;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    border: 1px solid var(--border);
+    background: var(--surface-muted);
+    color: var(--text);
+
+    transition: 0.15s;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .aegis-btn:active {
+    transform: scale(0.99);
+  }
+
+  .aegis-btn:disabled,
+  .aegis-btn.is-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* Primary 버튼 (선택/진행/접속) */
+  .aegis-btn--primary {
+    background: var(--primary-soft);
+    border-color: var(--border-strong);
+    color: var(--text-strong);
+  }
+  .aegis-btn--primary:hover {
+    filter: brightness(1.05);
+  }
+
+  /* Danger 버튼 (긴급/삭제/위험) */
+  .aegis-btn--danger {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #ffffff;
+  }
+  .aegis-btn--danger:hover {
+    background: var(--danger-hover);
+  }
+
+  /* Ghost 버튼 (상단/보조 액션) */
+  .aegis-btn--ghost {
+    background: transparent;
+    border-color: var(--border);
+  }
+  .aegis-btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* -------------------------------------------------------
+     E) 기존 btn-rounded-navy 호환 유지
+     - 이름은 유지하되 토큰 기반 다크 버튼으로 재정의
+     ------------------------------------------------------- */
+  .btn-rounded-navy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 40px;       /* h-10 */
+    padding: 0 14px;
+    border-radius: 9999px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    border: 1px solid var(--border);
+    background: var(--surface-muted);
+    color: var(--text);
+  }
+  .btn-rounded-navy:hover {
+    filter: brightness(1.05);
+  }
+
+  /* -------------------------------------------------------
+     F) Header tabs (토큰 기반)
+     ------------------------------------------------------- */
+  .aegis-header-tab {
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    transition: 0.2s;
+    color: var(--text-muted);
+  }
+  .aegis-header-tab:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-strong);
+  }
+  .aegis-header-tab--active {
+    background: rgba(255, 255, 255, 0.10);
+    color: var(--text-strong);
+  }
+
+  /* -------------------------------------------------------
+     G) Tag(배지)
+     - 기존 token( tag-*) 쓰던 부분은 “다크 기본”에 맞춰 재정의
+     ------------------------------------------------------- */
+  .aegis-tag {
+    font-size: 10px;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: var(--text-muted);
+  }
+
+  /* -------------------------------------------------------
+     H) Divider
+     ------------------------------------------------------- */
+  .aegis-divider {
+    height: 1px;
+    background: var(--border);
+    opacity: 0.7;
+  }
+
+  
+}

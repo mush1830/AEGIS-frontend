@@ -1,0 +1,290 @@
+/* styles/triage-report.css */
+/* 목적: 환자 발생 유형/증상 선택 UI (칩 버튼 + 그리드) */
+
+/* ====== 기본 레이아웃 ====== */
+.triage-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.triage-shell {
+  /* 태블릿 화면 기준 중앙 폭 제한 */
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 18px 16px 28px;
+}
+
+/* ====== 상단 바 (뒤로가기 + 상단 여백 느낌) ====== */
+.triage-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  margin-bottom: 10px;
+}
+
+.triage-back {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 85%, transparent);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.triage-back:active {
+  transform: scale(0.98);
+}
+
+.triage-divider {
+  height: 1px;
+  background: color-mix(in oklab, var(--border) 70%, transparent);
+  margin: 8px 0 16px;
+}
+
+/* ====== 섹션 ====== */
+.triage-section {
+  margin-top: 18px;
+}
+
+
+
+
+
+
+.step-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px; /* 10px → 8px (badge 없어졌으니 살짝 줄임) */
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.step-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.step-hint {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* ====== 칩(버튼) 공통 ====== */
+.chip-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  color: color-mix(in oklab, var(--fg) 78%, var(--muted));
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.chip:hover {
+  background: color-mix(in oklab, var(--card) 86%, transparent);
+}
+
+.chip:active {
+  transform: scale(0.99);
+}
+
+.chip:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring, #60a5fa) 45%, transparent);
+}
+
+/* 선택됨(스크린샷의 파란 테두리 느낌) */
+.chip.is-active {
+  border-color: color-mix(in oklab, var(--primary, #3b82f6) 85%, white);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary, #3b82f6) 85%, white) inset;
+  color: color-mix(in oklab, var(--fg) 92%, white);
+  background: color-mix(in oklab, var(--card) 88%, transparent);
+}
+
+/* 비활성(필요 시) */
+.chip.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ====== 증상 선택 그리드 ====== */
+.symptom-group {
+  margin-top: 14px;
+}
+
+/* '통증/두통/...' 같은 카테고리 라벨 */
+.symptom-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted);
+  margin: 10px 0 8px;
+}
+
+/* 칩을 그리드로 배치 */
+.chip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 680px) {
+  .chip-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .chip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 그리드용 칩은 폭 100% */
+.chip-grid .chip {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* ====== 섹션 간 여백(스크린샷처럼 위아래 띄우기) ====== */
+.section-spacer {
+  height: 10px;
+}
+
+/* ====== 하단 안전영역 ====== */
+.safe-bottom {
+  height: 24px;
+}
+
+/* =========================================================
+   Triage Flow - Bottom CTA (스크린샷 동일 디자인)
+   - triage-report / triage-assessment 공통 사용
+   ========================================================= */
+
+.triage-content {
+  /* 하단 고정 CTA에 내용이 가려지지 않도록 */
+  padding-bottom: 80px;
+}
+
+.triage-bottom-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+}
+
+.triage-bottom-cta__btn {
+  width: 100%;
+  height: 56px;
+
+  border: 0;
+  border-top: 1px solid var(--border);
+
+  background: var(--primary);
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.triage-bottom-cta__btn:active {
+  filter: brightness(0.95);
+}
+
+.triage-bottom-cta__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   Triage Assessment - Vitals Input (스크린샷 동일)
+   ========================================================= */
+
+.vital-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px 18px; /* 가로 간격 조금 더 */
+  margin-top: 6px;
+}
+
+@media (max-width: 900px) {
+  .vital-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.vital-line {
+  padding: 12px 0 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.vital-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* 입력 줄(빈칸이 보이도록 높이/정렬 강제) */
+.vital-row {
+  display: flex;
+  align-items: center; /* baseline 말고 center로(세로로 안 흩어지게) */
+  gap: 10px;
+  min-height: 26px; /* “빈 입력칸” 높이 확보 */
+}
+
+.vital-input {
+  flex: 1 1 auto;
+  height: 26px;            /* 입력칸 높이 확보 */
+  line-height: 26px;
+  background: transparent;
+  border: 0;
+  outline: none;
+  padding: 0;              /* 텍스트가 떠보이지 않게 */
+  color: var(--fg);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* placeholder가 없으면 빈칸이 너무 비어 보여서, 연하게 표시 */
+.vital-input::placeholder {
+  color: var(--text-subtle);
+}
+
+/* readonly 텍스트도 입력칸처럼 보이게 */
+.vital-input--readonly {
+  height: 26px;
+  line-height: 26px;
+  color: var(--fg);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.vital-unit {
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-subtle);
+  white-space: nowrap;
+}
